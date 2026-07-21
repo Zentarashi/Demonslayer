@@ -1,4 +1,4 @@
-
+console.log("breathing.js is loaded);
 document.addEventListener("DOMContentLoaded", function() {
     document.querySelectorAll('.messageinformation tr').forEach(tr => {
         const tdText = tr.querySelector('td:last-child').textContent.trim(); 
