@@ -1,0 +1,185 @@
+/* ============================================
+   INSEKTENATMUNG — CSS
+   Klasse: .insektenatmung
+   Keyframe-Prefix: ia
+   ============================================ */
+
+.insektenatmung {
+  background: radial-gradient(ellipse at 30% 20%, #2e1550, #1c0e33 60%, #150a26 100%) !important;
+  background-color: #150a26 !important;
+  border-radius: 8px;
+  padding: 30px 34px;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Georgia', serif;
+  min-height: 220px;
+  color: #d9bfef;
+  isolation: isolate;
+}
+
+/* Weiche Nebel-Glows in den Ecken */
+.insektenatmung .ia-glow-tr {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124,63,196,0.25), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.insektenatmung .ia-glow-bl {
+  position: absolute;
+  bottom: -30px;
+  left: -30px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200,0,255,0.15), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Funkelnde Sterne */
+.insektenatmung .ia-star {
+  position: absolute;
+  border-radius: 50%;
+  background: #e0aaff;
+  z-index: 1;
+  animation: iaTwinkle 2.6s ease-in-out infinite;
+}
+
+@keyframes iaTwinkle {
+  0%, 100% { opacity: 0.2; transform: scale(0.8); }
+  50%      { opacity: 1;   transform: scale(1.4); }
+}
+
+/* Kaleidoskop-Muster oben rechts */
+.insektenatmung .ia-kaleidoscope {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  width: 110px;
+  height: 110px;
+  opacity: 0.2;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Falter */
+.insektenatmung .ia-butterfly {
+  position: absolute;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.insektenatmung .ia-butterfly .ia-wings {
+  animation: iaFlap 0.3s ease-in-out infinite alternate;
+  transform-origin: 13px 10px;
+}
+
+@keyframes iaFlap {
+  from { transform: scaleX(1); }
+  to   { transform: scaleX(0.55); }
+}
+
+.insektenatmung .ia-butterfly-1 { animation: iaFlyFull1 9s ease-in-out infinite; }
+.insektenatmung .ia-butterfly-2 { animation: iaFlyFull2 7.5s ease-in-out infinite; }
+.insektenatmung .ia-butterfly-3 { animation: iaFlyFull3 8.2s ease-in-out infinite; }
+.insektenatmung .ia-butterfly-4 { animation: iaFlyFull4 6.8s ease-in-out infinite; }
+.insektenatmung .ia-butterfly-5 { animation: iaFlyFull5 10s ease-in-out infinite; }
+
+@keyframes iaFlyFull1 {
+  0%   { top: 0px;   left: -5%; }
+  15%  { top: 60px;  left: 20%; }
+  30%  { top: 10px;  left: 45%; }
+  45%  { top: 120px; left: 60%; }
+  60%  { top: 40px;  left: 80%; }
+  75%  { top: 150px; left: 95%; }
+  90%  { top: 70px;  left: 70%; }
+  100% { top: 0px;   left: -5%; }
+}
+
+@keyframes iaFlyFull2 {
+  0%   { top: 170px; left: 100%; }
+  20%  { top: 90px;  left: 75%; }
+  40%  { top: 150px; left: 50%; }
+  60%  { top: 20px;  left: 30%; }
+  80%  { top: 100px; left: 5%; }
+  100% { top: 170px; left: 100%; }
+}
+
+@keyframes iaFlyFull3 {
+  0%   { top: 190px; left: -5%; }
+  20%  { top: 30px;  left: 25%; }
+  40%  { top: 110px; left: 55%; }
+  60%  { top: 5px;   left: 75%; }
+  80%  { top: 160px; left: 90%; }
+  100% { top: 190px; left: -5%; }
+}
+
+@keyframes iaFlyFull4 {
+  0%   { top: 20px;  left: 100%; }
+  25%  { top: 130px; left: 70%; }
+  50%  { top: 60px;  left: 40%; }
+  75%  { top: 170px; left: 15%; }
+  100% { top: 20px;  left: 100%; }
+}
+
+@keyframes iaFlyFull5 {
+  0%   { top: 100px; left: -5%; }
+  30%  { top: 180px; left: 35%; }
+  55%  { top: 50px;  left: 60%; }
+  80%  { top: 130px; left: 85%; }
+  100% { top: 100px; left: -5%; }
+}
+
+/* Label (immer "Insektenatmung") */
+.insektenatmung .ia-label {
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: #e0aaff;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Techniktitel (Typewriter-Ziel) */
+.insektenatmung .ia-title {
+  font-size: 30px;
+  font-style: italic;
+  color: #f5e6ff;
+  margin-bottom: 18px;
+  position: relative;
+  z-index: 2;
+  min-height: 38px;
+}
+
+/* Trennlinie */
+.insektenatmung .ia-line {
+  height: 1px;
+  background: linear-gradient(to right, #c084fc, transparent);
+  margin-bottom: 18px;
+  width: 100%;
+  transform-origin: left;
+  animation: iaLine 1s ease-out;
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes iaLine {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* Beschreibung */
+.insektenatmung .ia-description {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #d9bfef;
+  position: relative;
+  z-index: 2;
+}

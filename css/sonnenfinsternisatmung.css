@@ -1,0 +1,161 @@
+/* ============================================================
+   SONNENFINSTERNIS-ATMUNG (皆既の呼吸)
+   Klasse: .sonnenfinsternisatmung
+   In globales CSS einbinden
+   ============================================================ */
+
+.sonnenfinsternisatmung {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  background-color: #070610 !important;
+  background: radial-gradient(ellipse at 50% 40%, #14122a 0%, #070610 72%) !important;
+  border-radius: 4px;
+  overflow: hidden;
+  padding: 26px 40px 30px;
+  box-sizing: border-box;
+  color: #cfd0dc;
+  font-family: sans-serif;
+}
+
+.sonnenfinsternisatmung .sfLabel {
+  position: relative;
+  z-index: 3;
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: #8a7a5a;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  font-family: 'Noto Serif JP', serif;
+}
+
+.sonnenfinsternisatmung .sfTitle {
+  position: relative;
+  z-index: 3;
+  font-family: 'Kalnia Glaze', serif;
+  font-weight: 700;
+  font-size: 27px;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid #f0e2b8;
+  width: 0;
+  animation: sfCaret 0.8s step-end infinite;
+
+  /* Licht-Schimmer läuft durch die Schrift */
+  background: linear-gradient(100deg, #b8a878 20%, #f0e2b8 38%, #fffdf0 50%, #f0e2b8 62%, #b8a878 80%);
+  background-size: 260% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.sonnenfinsternisatmung .sfTitle.sfShineOn {
+  animation: sfCaret 0.8s step-end infinite, sfShine 3.4s linear infinite;
+}
+
+@keyframes sfCaret { 50% { border-color: transparent; } }
+@keyframes sfShine {
+  0%   { background-position: 220% 0; }
+  100% { background-position: -80% 0; }
+}
+
+.sonnenfinsternisatmung .sfDivider {
+  position: relative;
+  z-index: 3;
+  height: 1px;
+  margin: 16px 0 18px;
+  background-color: #4a4560;
+}
+
+.sonnenfinsternisatmung .sfDesc {
+  position: relative;
+  z-index: 3;
+  font-style: italic;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #a8a4bc;
+}
+
+/* ---- Effekt-Ebene: zersplitterte Lichtkrone ---- */
+.sonnenfinsternisatmung .sfEffectLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.sonnenfinsternisatmung .sfFlash {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 45%, rgba(255, 246, 216, 0.55), transparent 60%);
+  opacity: 0;
+  animation: sfFlash 3.4s ease-in-out infinite;
+}
+@keyframes sfFlash {
+  0%, 22% { opacity: 0; }
+  26%     { opacity: 1; }
+  34%     { opacity: 0; }
+}
+
+.sonnenfinsternisatmung .sfCore {
+  position: absolute;
+  top: 65px;
+  left: 50%;
+  margin-left: -50px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff6d8, #f4d58d 55%, transparent 78%);
+  filter: drop-shadow(0 0 30px #f4d58d) drop-shadow(0 0 60px rgba(244, 213, 141, 0.6));
+  animation: sfCoreBurst 3.4s ease-in-out infinite;
+}
+@keyframes sfCoreBurst {
+  0%   { transform: scale(1); opacity: 1; }
+  18%  { transform: scale(1.5); opacity: 1; }
+  26%  { transform: scale(0); opacity: 0; }
+  100% { transform: scale(0); opacity: 0; }
+}
+
+.sonnenfinsternisatmung .sfShard {
+  position: absolute;
+  top: 90px;
+  left: 50%;
+  margin-left: -17px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 5px solid transparent;
+  border-top-color: #16121f;
+  border-right-color: #1c1830;
+  box-shadow: inset 0 0 0 1px #cfcbe6;
+  filter: drop-shadow(0 0 5px #cfcbe6);
+  opacity: 0;
+  animation: sfShardFly 3.4s ease-out infinite;
+}
+@keyframes sfShardFly {
+  0%, 22% { opacity: 0; transform: translate(0, 0) rotate(0deg) scale(0.4); }
+  30%     { opacity: 1; }
+  100%    { opacity: 0; transform: translate(var(--dx), var(--dy)) rotate(var(--dr)) scale(1); }
+}
+
+.sonnenfinsternisatmung .sfSpark {
+  position: absolute;
+  top: 95px;
+  left: 50%;
+  margin-left: -2px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #fff6d8;
+  box-shadow: 0 0 6px 2px #fff6d8;
+  opacity: 0;
+  animation: sfSparkFly 3.4s ease-out infinite;
+}
+@keyframes sfSparkFly {
+  0%, 24% { opacity: 0; transform: translate(0, 0) scale(1); }
+  28%     { opacity: 1; }
+  100%    { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0.3); }
+}

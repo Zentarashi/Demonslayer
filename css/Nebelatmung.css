@@ -1,0 +1,87 @@
+/* ===================== NEBELATMUNG ===================== */
+.nebelatmung{
+  position:relative;
+  max-width:820px;
+  margin:16px auto;
+  padding:34px 40px 30px 40px;
+  background-color:#0d1210 !important;
+  background:radial-gradient(ellipse at 30% 0%, #17211d 0%, #0d1210 55%, #0a0e0c 100%) !important;
+  border-radius:6px;
+  overflow:hidden;
+  box-shadow:0 0 0 1px rgba(184,222,216,0.08), 0 20px 50px rgba(0,0,0,0.55);
+  isolation:isolate;
+}
+.nebelatmung .na-canvas{
+  position:absolute; inset:0; width:100%; height:100%;
+  z-index:1; opacity:0.85;
+}
+.nebelatmung .na-silhouette{
+  position:absolute; bottom:0; left:0; width:100%; height:110px;
+  z-index:2; opacity:0;
+  animation:naSilhouetteReveal 9s ease-in-out infinite;
+  pointer-events:none;
+}
+.nebelatmung .na-silhouette svg{width:100%;height:100%;display:block;}
+.nebelatmung .na-silhouette path{fill:#0a0e0c;}
+.nebelatmung .na-corner{
+  position:absolute; width:70px; height:70px; z-index:3;
+  opacity:0.35; pointer-events:none;
+}
+.nebelatmung .na-corner svg{width:100%;height:100%;}
+.nebelatmung .na-corner path{fill:none;stroke:#4d7d76;stroke-width:1;}
+.nebelatmung .na-corner-tl{top:12px;left:12px;}
+.nebelatmung .na-corner-br{bottom:12px;right:12px;transform:rotate(180deg);}
+.nebelatmung .na-content{position:relative;z-index:4;}
+.nebelatmung .na-label{
+  font-family:"Noto Serif JP",serif;
+  font-size:12px; letter-spacing:4px;
+  color:#4d7d76 !important;
+  text-transform:uppercase;
+  margin-bottom:8px;
+}
+.nebelatmung .na-title{
+  font-family:"Cinzel",serif;
+  font-weight:700;
+  font-size:34px;
+  color:#b8ded8 !important;
+  text-shadow:0 0 18px rgba(184,222,216,0.35);
+  margin:0 0 14px 0;
+  min-height:44px;
+  white-space:nowrap;
+  overflow:hidden;
+}
+.nebelatmung .na-caret{
+  display:inline-block;
+  width:2px; height:0.9em;
+  background:#b8ded8;
+  margin-left:2px;
+  vertical-align:-2px;
+  animation:naCaretBlink 0.8s step-end infinite;
+}
+.nebelatmung .na-divider{
+  height:1px; width:100%;
+  background:linear-gradient(90deg, rgba(77,125,118,0) 0%, rgba(77,125,118,0.5) 50%, rgba(77,125,118,0) 100%);
+  margin-bottom:16px;
+}
+.nebelatmung .na-desc{
+  font-family:"Noto Serif JP",serif;
+  font-size:14.5px; line-height:1.85;
+  color:#93bab1 !important;
+  font-style:italic;
+}
+.nebelatmung .na-fog-bottom{
+  position:absolute; left:-10%; bottom:-30px;
+  width:120%; height:90px;
+  background:linear-gradient(to top, rgba(184,222,216,0.16), rgba(184,222,216,0) 100%);
+  filter:blur(4px); z-index:3;
+  animation:naFogDrift 12s ease-in-out infinite alternate;
+  pointer-events:none;
+}
+@keyframes naCaretBlink{ 50%{background:transparent;} }
+@keyframes naSilhouetteReveal{
+  0%,70%{opacity:0;} 80%{opacity:0.5;} 88%{opacity:0.15;} 94%{opacity:0.4;} 100%{opacity:0;}
+}
+@keyframes naFogDrift{
+  from{transform:translateX(-15px);} to{transform:translateX(15px);}
+}
+/* ===================== /NEBELATMUNG ===================== */

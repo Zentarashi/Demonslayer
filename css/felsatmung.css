@@ -1,0 +1,126 @@
+/* ============================================================
+   FELSATMUNG
+   Klasse: felsatmung
+   Berg-/Klippenbild als Base64 eingebettet (gemeinfrei, Openclipart).
+   Datei dadurch recht gross (~240 KB) -- falls das spaeter
+   Ladezeit-Probleme macht: Bild stattdessen als Datei hochladen
+   und hier per url('...') auf die echte Bild-URL verweisen.
+   ============================================================ */
+
+.felsatmung {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  min-height: 260px;
+  margin: 20px 0;
+  background-color: #0c0d10 !important;
+  background: #0c0d10 !important;
+  isolation: isolate;
+}
+
+.felsatmung .fs-mountain {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  filter: brightness(.35) saturate(.6) sepia(.15);
+  z-index: 0;
+}
+
+.felsatmung .fs-fade-bottom {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%; height: 60%;
+  background: linear-gradient(to top, rgba(8, 8, 10, .95) 10%, transparent 100%);
+  z-index: 1;
+}
+
+.felsatmung .fs-mist {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 130%; height: 35%;
+  background: linear-gradient(to top, rgba(200, 205, 215, .25), transparent);
+  animation: fsMist 8s ease-in-out infinite;
+  z-index: 2;
+}
+@keyframes fsMist {
+  0%, 100% { opacity: .5; transform: translateX(0); }
+  50%      { opacity: .8; transform: translateX(15px); }
+}
+
+.felsatmung .fs-glow {
+  position: absolute;
+  top: 35%; left: 50%;
+  width: 220px; height: 220px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(180, 150, 90, .35) 0%, transparent 70%);
+  filter: blur(14px);
+  animation: fsGlow 6s ease-in-out infinite;
+  z-index: 2;
+}
+@keyframes fsGlow { 0%, 100% { opacity: .2; } 50% { opacity: .8; } }
+
+.felsatmung .fs-dust {
+  position: absolute;
+  border-radius: 50%;
+  background: #cbbfa0;
+  animation: fsDust 5s ease-in infinite;
+  z-index: 3;
+}
+@keyframes fsDust {
+  0%   { opacity: 0; transform: translateY(0); }
+  30%  { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-40px); }
+}
+
+.felsatmung .fs-content {
+  position: relative;
+  z-index: 5;
+  padding: 28px 40px;
+  color: #e8e2d8;
+}
+
+.felsatmung .fs-label {
+  font-family: 'Oxanium', sans-serif;
+  letter-spacing: 3px;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #c9bfa8;
+  margin-bottom: 8px;
+}
+
+.felsatmung .fs-title {
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  font-style: italic;
+  font-size: 26px;
+  color: #f0e6d0;
+  margin-bottom: 10px;
+  min-height: 34px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, .8);
+}
+
+.felsatmung .fs-typewriter::after {
+  content: '|';
+  animation: fsBlink .8s step-end infinite;
+  opacity: .6;
+}
+@keyframes fsBlink { 50% { opacity: 0; } }
+
+.felsatmung .fs-divider {
+  height: 1px;
+  width: 46%;
+  background: linear-gradient(to right, rgba(230, 220, 190, .4), transparent);
+  margin-bottom: 12px;
+}
+
+.felsatmung .fs-desc {
+  font-family: 'Oxanium', sans-serif;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #c9c0ac;
+  max-width: 60%;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, .8);
+}
