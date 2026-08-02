@@ -1,3 +1,4 @@
+console.log("adminansage is loaded");
 document.addEventListener("DOMContentLoaded", function () {
   var shardAngles = [8,38,70,100,130,160,190,220,250,280,310,340];
 
