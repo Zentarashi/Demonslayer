@@ -1,0 +1,106 @@
+/* ===== ADMIN-ANSAGE ("Glassplitter") ===== */
+.adminansage{
+  position:relative;
+  overflow:hidden;
+  background:#f7f7f5 !important;
+  background-color:#f7f7f5 !important;
+  border:1px solid #e6e6e0;
+  border-radius:6px;
+  box-shadow:0 4px 24px rgba(0,0,0,.07);
+  padding:44px 32px 46px;
+  text-align:center;
+  animation: aaShake 3.5s ease-in-out infinite;
+  font-family:sans-serif;
+}
+
+@keyframes aaShake{
+  0%,47%,100%{ transform:translate(0,0); }
+  48%{ transform:translate(-5px,3px); }
+  49%{ transform:translate(6px,-4px); }
+  50%{ transform:translate(-4px,2px); }
+  51%{ transform:translate(5px,-2px); }
+  52%{ transform:translate(-3px,1px); }
+  53%{ transform:translate(2px,0); }
+  54%{ transform:translate(0,0); }
+}
+
+.adminansage .aa-flash{
+  position:absolute; inset:0; background:#fff; opacity:0;
+  animation: aaFlash 3.5s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes aaFlash{ 0%,46%{opacity:0;} 50%{opacity:.9;} 55%{opacity:0;} 100%{opacity:0;} }
+
+.adminansage .aa-afterglow{
+  position:absolute; inset:0; opacity:0; pointer-events:none;
+  background:radial-gradient(circle at 50% 50%, rgba(255,215,0,.4), transparent 70%);
+  animation: aaGlow 3.5s ease-in-out infinite;
+}
+@keyframes aaGlow{ 0%,46%{opacity:0;} 50%{opacity:1;} 80%{opacity:.5;} 92%{opacity:0;} 100%{opacity:0;} }
+
+.adminansage .aa-shard{
+  position:absolute; top:50%; left:50%; width:1.5px; height:48%;
+  background:linear-gradient(180deg, transparent, rgba(20,20,20,.55) 45%, rgba(184,148,31,.6) 55%, transparent);
+  transform-origin:top center;
+  opacity:0;
+  pointer-events:none;
+  animation: aaShard 3.5s ease-in-out infinite;
+}
+@keyframes aaShard{
+  0%,45%{ opacity:0; }
+  47%{ opacity:1; }
+  82%{ opacity:1; }
+  90%{ opacity:0; }
+  100%{ opacity:0; }
+}
+
+.adminansage .aa-content{
+  position:relative; z-index:3;
+  display:inline-block;
+  animation: aaPunch 3.5s ease-in-out infinite;
+}
+@keyframes aaPunch{
+  0%,46%{ transform:scale(1); }
+  49%{ transform:scale(1.04); }
+  82%{ transform:scale(1.015); }
+  90%,100%{ transform:scale(1); }
+}
+
+.adminansage .aa-label{
+  font-size:12px;
+  letter-spacing:5px;
+  text-transform:uppercase;
+  margin-bottom:14px;
+  color:#8a6d16;
+  font-family:'Oxanium', sans-serif;
+}
+
+.adminansage .aa-title{
+  font-size:42px;
+  margin:4px 0 16px;
+  font-family:'Cinzel', serif;
+  font-weight:700;
+  color:#20180a;
+  min-height:1.2em;
+}
+.adminansage .aa-cursor{
+  display:inline-block;
+  animation: aaBlink 0.8s steps(1) infinite;
+  color:#b8941f;
+}
+@keyframes aaBlink{ 50%{ opacity:0; } }
+
+.adminansage .aa-divider{
+  height:1px;
+  width:60%;
+  margin:16px auto;
+  background:linear-gradient(90deg, transparent, #b8941f, transparent);
+}
+
+.adminansage .aa-desc{
+  font-size:16px;
+  line-height:1.7;
+  max-width:560px;
+  margin:0 auto;
+  color:#3a3226;
+}
