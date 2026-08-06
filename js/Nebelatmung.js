@@ -1,4 +1,3 @@
-javascript
 document.addEventListener('DOMContentLoaded', function(){
   var blocks = document.querySelectorAll('.nebelatmung');
 
