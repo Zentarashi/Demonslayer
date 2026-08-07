@@ -1,0 +1,183 @@
+/* ================================================
+   MONDATMUNG — CSS
+   In dein globales CSS einfügen
+   ================================================ */
+
+div.mondatmung {
+  position: relative;
+  padding: 1.6rem 1.8rem 1.8rem;
+  margin: .3rem 0;
+  overflow: hidden;
+  border-radius: 8px;
+  background: linear-gradient(180deg, #0c1e1e 0%, #071212 100%) !important;
+  background-color: #0c1e1e !important;
+  min-height: 110px;
+}
+
+/* Mondlicht von oben */
+div.mondatmung .moonwave {
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 70%;
+  background: radial-gradient(ellipse at 50% 0%, #7bc8c020 0%, transparent 70%);
+  animation: maMwave 5s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+@keyframes maMwave { 0%,100%{opacity:.5} 50%{opacity:1} }
+
+/* Canvas Lichtkegel */
+div.mondatmung .light-cone {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Sterne */
+div.mondatmung .stars { position:absolute; inset:0; z-index:1; pointer-events:none; }
+div.mondatmung .star  { position:absolute; border-radius:50%; background:#7bc8c0; animation:maTwinkle linear infinite; }
+@keyframes maTwinkle { 0%,100%{opacity:.06} 50%{opacity:.6} }
+
+/* Staubpartikel */
+div.mondatmung .dust {
+  position: absolute;
+  border-radius: 50%;
+  background: #7bc8c0;
+  pointer-events: none;
+  z-index: 3;
+  animation: maDust linear infinite;
+}
+@keyframes maDust {
+  0%   { opacity:0; transform:translate(0,0) scale(0); }
+  15%  { opacity:.5; }
+  85%  { opacity:.25; }
+  100% { opacity:0; transform:translate(var(--dx),var(--dy)) scale(1.5); }
+}
+
+/* Eclipse */
+div.mondatmung .eclipse-wrap {
+  position: absolute;
+  top: 50%; right: 5%;
+  transform: translateY(-50%);
+  width: 80px; height: 80px;
+  z-index: 4;
+}
+div.mondatmung .corona {
+  position: absolute; inset: -14px; border-radius: 50%;
+  background: radial-gradient(circle, transparent 38%, #7bc8c022 50%, #7bc8c044 60%, #7bc8c022 70%, transparent 82%);
+  animation: maCorona 4s ease-in-out infinite;
+}
+@keyframes maCorona { 0%,100%{opacity:.5;transform:scale(.95)} 50%{opacity:1;transform:scale(1.08)} }
+div.mondatmung .corona2 {
+  position: absolute; inset: -6px; border-radius: 50%;
+  background: radial-gradient(circle, transparent 45%, #7bc8c033 58%, #b0e8e055 65%, #7bc8c022 72%, transparent 80%);
+  animation: maCorona 4s ease-in-out infinite .8s;
+}
+div.mondatmung .moon-body {
+  position: absolute; inset: 0; border-radius: 50%;
+  background: radial-gradient(circle at 42% 38%, #d8f8f2 0%, #7bc8c0 30%, #2a7a74 65%, #0d2020 100%);
+  animation: maEclipse 8s ease-in-out infinite;
+  box-shadow: 0 0 20px #7bc8c044;
+}
+div.mondatmung .eclipse-shadow {
+  position: absolute; inset: 0; border-radius: 50%;
+  background: #071212;
+  animation: maShadow 8s ease-in-out infinite;
+}
+@keyframes maEclipse {
+  0%   { box-shadow: 0 0 20px #7bc8c044, 0 0 40px #7bc8c022; }
+  35%  { box-shadow: 0 0 5px  #7bc8c022; }
+  50%  { box-shadow: 0 0 2px  #7bc8c011; }
+  100% { box-shadow: 0 0 20px #7bc8c044, 0 0 40px #7bc8c022; }
+}
+@keyframes maShadow {
+  0%   { transform:translateX(-110%); opacity:0; }
+  15%  { opacity:1; }
+  50%  { transform:translateX(8%); }
+  88%  { opacity:0; }
+  100% { transform:translateX(110%); opacity:0; }
+}
+div.mondatmung .corona-eclipse {
+  position: absolute; inset: -8px; border-radius: 50%;
+  border: 2px solid #7bc8c0; opacity: 0;
+  box-shadow: 0 0 15px #7bc8c088, 0 0 30px #7bc8c044;
+  animation: maCrown 8s ease-in-out infinite;
+}
+@keyframes maCrown { 0%,20%{opacity:0} 40%{opacity:.8} 50%{opacity:1} 60%{opacity:.8} 80%,100%{opacity:0} }
+div.mondatmung .ray-line {
+  position: absolute; top:50%; left:50%;
+  height: 1px; background: linear-gradient(to right, #7bc8c066, transparent);
+  transform-origin: left center; opacity: 0;
+  animation: maRay 8s ease-in-out infinite;
+}
+div.mondatmung .ray-line:nth-child(6)  { width:30px; transform:rotate(0deg)   translateX(42px) translateY(-50%); animation-delay:.1s; }
+div.mondatmung .ray-line:nth-child(7)  { width:25px; transform:rotate(45deg)  translateX(42px) translateY(-50%); animation-delay:.2s; }
+div.mondatmung .ray-line:nth-child(8)  { width:30px; transform:rotate(90deg)  translateX(42px) translateY(-50%); animation-delay:.3s; }
+div.mondatmung .ray-line:nth-child(9)  { width:25px; transform:rotate(135deg) translateX(42px) translateY(-50%); animation-delay:.4s; }
+div.mondatmung .ray-line:nth-child(10) { width:30px; transform:rotate(180deg) translateX(42px) translateY(-50%); animation-delay:.5s; }
+div.mondatmung .ray-line:nth-child(11) { width:25px; transform:rotate(225deg) translateX(42px) translateY(-50%); animation-delay:.6s; }
+div.mondatmung .ray-line:nth-child(12) { width:30px; transform:rotate(270deg) translateX(42px) translateY(-50%); animation-delay:.7s; }
+div.mondatmung .ray-line:nth-child(13) { width:25px; transform:rotate(315deg) translateX(42px) translateY(-50%); animation-delay:.8s; }
+@keyframes maRay { 0%,25%{opacity:0} 45%{opacity:.7} 50%{opacity:1} 55%{opacity:.7} 75%,100%{opacity:0} }
+
+/* Nebel */
+div.mondatmung .mist { position:absolute; bottom:0; left:0; right:0; height:40px; pointer-events:none; z-index:1; overflow:hidden; }
+div.mondatmung .mist-layer { position:absolute; bottom:0; width:200%; height:100%; }
+div.mondatmung .mist-layer:nth-child(1) { background:radial-gradient(ellipse at 50% 100%, #7bc8c022 0%, transparent 70%); animation:maMist 6s ease-in-out infinite; }
+div.mondatmung .mist-layer:nth-child(2) { background:radial-gradient(ellipse at 30% 100%, #7bc8c015 0%, transparent 60%); animation:maMist 8s ease-in-out infinite reverse; }
+@keyframes maMist { 0%{transform:translateX(0)} 50%{transform:translateX(-20%)} 100%{transform:translateX(0)} }
+
+/* Text */
+div.mondatmung .tech-label {
+  font-family: monospace;
+  font-size: 9px;
+  letter-spacing: .22em;
+  color: #7bc8c055;
+  text-transform: uppercase;
+  margin-bottom: .4rem;
+  position: relative;
+  z-index: 5;
+}
+div.mondatmung .tech-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1.15rem;
+  color: #d5f5f0;
+  position: relative;
+  z-index: 5;
+  animation: maGlow 4s ease-in-out infinite;
+  min-height: 1.8em;
+  padding-right: 100px;
+}
+@keyframes maGlow {
+  0%,100% { text-shadow: 0 0 10px #7bc8c066; }
+  50%      { text-shadow: 0 0 22px #7bc8c0cc, 0 0 45px #3a9e9844; }
+}
+div.mondatmung .tech-line {
+  border: none;
+  border-top: .5px solid #7bc8c022;
+  margin: .55rem 0;
+  position: relative;
+  z-index: 5;
+}
+div.mondatmung .tech-desc {
+  font-family: Georgia, serif;
+  font-size: 12px;
+  color: #7bc8c066;
+  font-style: italic;
+  margin-top: .3rem;
+  position: relative;
+  z-index: 5;
+  line-height: 1.6;
+  padding-right: 100px;
+}
+div.mondatmung .cursor {
+  display: inline-block;
+  width: 2px; height: 1em;
+  background: #7bc8c0;
+  margin-left: 2px;
+  vertical-align: middle;
+  animation: maCursor .6s steps(1) infinite;
+  box-shadow: 0 0 6px #7bc8c0;
+}
+@keyframes maCursor { 0%,100%{opacity:1} 50%{opacity:0} }
