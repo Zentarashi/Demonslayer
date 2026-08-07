@@ -18,20 +18,25 @@ document.querySelectorAll(".felsatmung").forEach(function (el) {
   var technikname = (parts[0] || "").trim();
   var beschreibung = (parts.slice(1).join("|") || "").trim();
 
-  el.innerHTML =
-    "<img class="fs-mountain" src="" + FS_MOUNTAIN_SRC + "" alt="">" +
-    "<div class="fs-fade-bottom"></div>" +
-    "<div class="fs-mist"></div>" +
-    "<div class="fs-glow"></div>" +
-    "<div class="fs-dust" style="width:2px;height:2px;top:60%;left:30%;animation-delay:.5s;"></div>" +
-    "<div class="fs-dust" style="width:3px;height:3px;top:65%;left:55%;animation-delay:1.6s;"></div>" +
-    "<div class="fs-dust" style="width:2px;height:2px;top:70%;left:70%;animation-delay:2.8s;"></div>" +
-    "<div class="fs-content">" +
-      "<div class="fs-label">Felsatmung</div>" +
-      "<div class="fs-title"><span class="fs-typewriter"></span></div>" +
-      "<div class="fs-divider"></div>" +
-      "<div class="fs-desc"></div>" +
-    "</div>";
+  el.innerHTML = `
+  <img class="fs-mountain" src="${FS_MOUNTAIN_SRC}" alt="">
+  <div class="fs-fade-bottom"></div>
+  <div class="fs-mist"></div>
+  <div class="fs-glow"></div>
+
+  <div class="fs-dust" style="width:2px;height:2px;top:60%;left:30%;animation-delay:.5s;"></div>
+  <div class="fs-dust" style="width:3px;height:3px;top:65%;left:55%;animation-delay:1.6s;"></div>
+  <div class="fs-dust" style="width:2px;height:2px;top:70%;left:70%;animation-delay:2.8s;"></div>
+
+  <div class="fs-content">
+    <div class="fs-label">Felsatmung</div>
+    <div class="fs-title">
+      <span class="fs-typewriter"></span>
+    </div>
+    <div class="fs-divider"></div>
+    <div class="fs-desc"></div>
+  </div>
+`;
 
   var titleEl = el.querySelector(".fs-typewriter");
   var descEl = el.querySelector(".fs-desc");
