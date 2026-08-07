@@ -1,0 +1,74 @@
+/* ================================================
+   WASSERATMUNG — CSS
+   In dein globales CSS einfügen
+   ================================================ */
+
+div.wasseratmung {
+  position: relative;
+  padding: 1.6rem 1.8rem 1.8rem;
+  margin: .3rem 0;
+  overflow: hidden;
+  border-radius: 6px;
+  background: linear-gradient(180deg, #001520 0%, #002233 50%, #001015 100%) !important;
+  background-color: #001520 !important;
+  min-height: 120px;
+}
+
+div.wasseratmung::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 120%, #00aacc22 0%, transparent 55%);
+  pointer-events: none; z-index: 1;
+  animation: waDeepGlow 5s ease-in-out infinite;
+}
+@keyframes waDeepGlow { 0%,100%{opacity:.5} 50%{opacity:1} }
+
+/* Tropfen */
+div.wasseratmung .drops { position:absolute; inset:0; z-index:3; pointer-events:none; overflow:hidden; }
+div.wasseratmung .drop {
+  position: absolute; top: -10px; width: 2px; border-radius: 50%;
+  background: linear-gradient(180deg, #00ccee99, #00aacc44);
+  animation: waDropFall linear infinite;
+}
+@keyframes waDropFall {
+  0%   { opacity:0; transform:translateY(0); }
+  5%   { opacity:.9; }
+  90%  { opacity:.5; }
+  100% { opacity:0; transform:translateY(160px); }
+}
+
+/* Canvas */
+div.wasseratmung .wave-canvas {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 65px; z-index: 4; pointer-events: none;
+}
+
+/* Text */
+div.wasseratmung .tech-label {
+  font-family: monospace; font-size: 9px; letter-spacing: .22em;
+  color: #00aacc55; text-transform: uppercase; margin-bottom: .4rem;
+  position: relative; z-index: 6;
+}
+div.wasseratmung .tech-title {
+  font-family: 'Noto Serif JP', serif; font-size: 1.1rem; color: #c8f0ff;
+  position: relative; z-index: 6; min-height: 1.8em;
+  animation: waTitleFlow 6s ease-in-out infinite;
+}
+@keyframes waTitleFlow {
+  0%,100% { text-shadow:0 0 10px #00aacc66; letter-spacing:0.01em; }
+  50%      { text-shadow:0 0 20px #00cceebb, 0 0 40px #00aacc44; letter-spacing:0.03em; }
+}
+div.wasseratmung .tech-line {
+  border: none; border-top: .5px solid #00aacc22;
+  margin: .55rem 0; position: relative; z-index: 6;
+}
+div.wasseratmung .tech-desc {
+  font-family: Georgia, serif; font-size: 12px; color: #00aacc77;
+  font-style: italic; margin-top: .3rem; position: relative; z-index: 6; line-height: 1.6;
+}
+div.wasseratmung .cursor {
+  display: inline-block; width: 2px; height: 1em; background: #00ccee;
+  margin-left: 2px; vertical-align: middle;
+  animation: waCursor .6s steps(1) infinite; box-shadow: 0 0 6px #00aacc;
+}
+@keyframes waCursor { 0%,100%{opacity:1} 50%{opacity:0} }
