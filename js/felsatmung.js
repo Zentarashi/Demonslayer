@@ -18,7 +18,7 @@ document.querySelectorAll(".felsatmung").forEach(function (el) {
   var technikname = (parts[0] || "").trim();
   var beschreibung = (parts.slice(1).join("|") || "").trim();
 
-  el.innerHTML = `
+ el.innerHTML = `
   <img class="fs-mountain" src="${FS_MOUNTAIN_SRC}" alt="">
   <div class="fs-fade-bottom"></div>
   <div class="fs-mist"></div>
@@ -30,9 +30,7 @@ document.querySelectorAll(".felsatmung").forEach(function (el) {
 
   <div class="fs-content">
     <div class="fs-label">Felsatmung</div>
-    <div class="fs-title">
-      <span class="fs-typewriter"></span>
-    </div>
+    <div class="fs-title"><span class="fs-typewriter"></span></div>
     <div class="fs-divider"></div>
     <div class="fs-desc"></div>
   </div>
