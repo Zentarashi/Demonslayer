@@ -8,9 +8,9 @@
    system oder einen Hoster, dann den Link hier einsetzen).
    ============================================================ */
 (function () {
-
-  var DRAGON_HEAD_URL = 'https://cdn.jsdelivr.net/gh/Zentarashi/Demonslayer@main/images/drachenkopf.png';
-  var WING_URL = 'https://cdn.jsdelivr.net/gh/Zentarashi/Demonslayer@main/images/fluegel.webp';
+   
+var DRAGON_HEAD_URL = 'https://cdn.jsdelivr.net/gh/Zentarashi/Demonslayer@main/images/todeshauch-drache.png';
+var WING_URL = 'https://cdn.jsdelivr.net/gh/Zentarashi/Demonslayer@main/images/Flügel.webp';
 
   var FOG_BANKS = [
     { top: '-15%', duration: '12s', delay: '0s' },
