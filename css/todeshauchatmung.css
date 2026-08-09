@@ -1,237 +1,169 @@
-/* ================================
+/* ============================================================
    TODESHAUCH-ATMUNG (死息の呼吸)
-   Klasse: todeshauchatmung
-   Keyframe-Präfix: ta
-   ================================ */
+   Klasse: .todeshauchatmung
+   In globales CSS einbinden
+   ============================================================ */
 
 .todeshauchatmung {
   position: relative;
-  background: #0a0f08 !important;
-  background-color: #0a0f08 !important;
-  border: 1px solid rgba(140, 220, 90, 0.25);
-  border-radius: 10px;
-  padding: 22px 26px 26px;
-  margin: 14px 0;
+  width: 100%;
+  max-width: 900px;
+  background-color: #060a05 !important;
+  background: linear-gradient(180deg, #0a0f08 0%, #060a05 100%) !important;
+  border-radius: 4px;
   overflow: hidden;
-  font-family: 'Noto Serif JP', serif;
-  color: #d8e8cc;
-  box-shadow: 0 0 25px rgba(120, 200, 70, 0.12), inset 0 0 45px rgba(0,0,0,0.7);
-  isolation: isolate;
+  padding: 26px 40px 30px;
+  box-sizing: border-box;
+  color: #cdd6c4;
+  font-family: sans-serif;
 }
 
-/* Label oben, fest */
-.todeshauchatmung .ta-label {
+.todeshauchatmung .taLabel {
+  position: relative;
+  z-index: 3;
   font-size: 11px;
-  letter-spacing: 3px;
-  color: rgba(150, 220, 100, 0.6);
-  font-weight: 700;
+  letter-spacing: 4px;
+  color: #6f8f4a;
   text-transform: uppercase;
   margin-bottom: 8px;
+  font-family: 'Noto Serif JP', serif;
+}
+
+.todeshauchatmung .taTitle {
   position: relative;
-  z-index: 6;
-}
-
-/* Titelzeile */
-.todeshauchatmung .ta-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  position: relative;
-  z-index: 6;
-}
-
-.todeshauchatmung .ta-icon {
-  color: #9dff5c;
-  font-size: 20px;
-  text-shadow: 0 0 8px rgba(140, 255, 70, 0.8);
-}
-
-.todeshauchatmung .ta-title {
+  z-index: 3;
   font-family: 'Savate', sans-serif;
-  font-weight: 700;
-  font-size: 25px;
-  color: #d9ffc2;
-  text-shadow: 0 0 10px rgba(140, 255, 70, 0.65), 0 0 22px rgba(90, 200, 40, 0.4);
+  font-weight: 900;
+  font-size: 28px;
+  color: #b8e05a;
+  text-shadow: 0 0 10px rgba(158, 224, 0, 0.55), 0 0 26px rgba(120, 20, 160, 0.25);
   white-space: nowrap;
   overflow: hidden;
   display: inline-block;
+  border-right: 2px solid #9ee000;
   width: 0;
-  border-right: 2px solid #9dff5c;
-  animation: taType 2.2s steps(34, end) forwards,
-             taCaret 0.75s step-end infinite,
-             taGlitch 6s ease-in-out infinite 2.4s;
+  animation: taCaret 0.8s step-end infinite;
 }
 
-@keyframes taType { from { width: 0; } to { width: 100%; } }
 @keyframes taCaret { 50% { border-color: transparent; } }
-@keyframes taGlitch {
-  0%, 96%, 100% { transform: none; filter: none; }
-  97% { transform: translate(-2px, 1px) skewX(3deg); filter: hue-rotate(30deg); }
-  98% { transform: translate(2px, -1px) skewX(-2deg); filter: hue-rotate(-20deg); }
-  99% { transform: none; filter: none; }
-}
 
-.todeshauchatmung .ta-divider {
-  border: none;
+.todeshauchatmung .taDivider {
+  position: relative;
+  z-index: 3;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(140, 255, 90, 0.55), transparent);
-  margin: 16px 0;
-  position: relative;
-  z-index: 6;
+  margin: 16px 0 18px;
+  background-color: #4a5a3f;
 }
 
-.todeshauchatmung .ta-desc {
+.todeshauchatmung .taDesc {
+  position: relative;
+  z-index: 3;
+  font-style: italic;
   font-size: 14px;
-  line-height: 1.75;
-  color: #cfe0c2;
-  position: relative;
-  z-index: 6;
+  line-height: 1.7;
+  color: #9aa88d;
 }
 
-/* Kanji im Hintergrund, fadet ein und aus */
-.todeshauchatmung .ta-kanji {
-  position: absolute;
-  font-family: 'Noto Serif JP', serif;
-  font-weight: 700;
-  color: rgba(140, 230, 90, 0.5);
-  z-index: 0;
-  opacity: 0;
-  pointer-events: none;
-}
-.todeshauchatmung .ta-kanji.k1 { top: 10%; right: 8%;  font-size: 70px; animation: taKanjiFade 9s ease-in-out infinite; }
-.todeshauchatmung .ta-kanji.k2 { bottom: 14%; left: 6%; font-size: 54px; color: rgba(150, 90, 200, 0.4); animation: taKanjiFade 9s ease-in-out infinite 3s; }
-.todeshauchatmung .ta-kanji.k3 { top: 46%; right: 22%;  font-size: 40px; animation: taKanjiFade 9s ease-in-out infinite 6s; }
-@keyframes taKanjiFade {
-  0%, 100% { opacity: 0; transform: scale(.9); }
-  50%      { opacity: 1; transform: scale(1); }
-}
-
-/* Verfallsrisse, spreizen sich und pulsieren giftig */
-.todeshauchatmung .ta-cracks {
+/* ---- Nebel-Ebene, zieht über den ganzen Kasten ---- */
+.todeshauchatmung .taFogLayer {
   position: absolute;
   inset: 0;
   z-index: 1;
+  overflow: hidden;
   pointer-events: none;
-  opacity: 0;
-  animation: taCrackPulse 4.4s ease-in-out infinite;
 }
-.todeshauchatmung .ta-cracks path {
-  fill: none;
-  stroke: rgba(150, 255, 90, 0.55);
-  stroke-width: 1.4;
-  stroke-dasharray: 240;
-  stroke-dashoffset: 240;
-  filter: drop-shadow(0 0 4px rgba(140, 255, 70, 0.6));
-  animation: taCrackGrow 4.4s ease-in-out infinite;
-}
-@keyframes taCrackPulse { 0%, 100% { opacity: .25; } 55% { opacity: .8; } }
-@keyframes taCrackGrow  { 0%, 40% { stroke-dashoffset: 240; } 70%, 100% { stroke-dashoffset: 0; } }
 
-/* Doppelfang: zwei Fänge stoßen von außen zur Mitte */
-.todeshauchatmung .ta-fangs {
+.todeshauchatmung .taFogBank {
+  position: absolute;
+  width: 75%;
+  height: 85%;
+  border-radius: 50%;
+  filter: blur(18px);
+  background: radial-gradient(ellipse, rgba(158, 224, 0, 0.42) 0%, rgba(122, 63, 168, 0.30) 48%, transparent 76%);
+  animation: taFogRoll linear infinite;
+}
+
+@keyframes taFogRoll {
+  0%   { transform: translateX(-65%); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateX(165%); opacity: 0; }
+}
+
+.todeshauchatmung .taFogVeil {
   position: absolute;
   inset: 0;
+  background: linear-gradient(180deg, rgba(120, 150, 90, 0.14), rgba(60, 20, 80, 0.20));
+  animation: taVeilPulse 5s ease-in-out infinite;
+}
+@keyframes taVeilPulse {
+  0%, 100% { opacity: 0.75; }
+  50%      { opacity: 1; }
+}
+
+/* ---- Schuppen an beiden Seiten, dezenter Hintergrund, durchgehend ---- */
+.todeshauchatmung .taScaleLayer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.14;
+  display: block;
+}
+
+/* ---- Atemhauch, kommt aus dem Maul des Drachen ---- */
+.todeshauchatmung .breathGust {
+  position: absolute;
+  transform-origin: 0% 50%;
+  animation: taGustBurst 4.2s ease-in-out infinite;
   z-index: 2;
   pointer-events: none;
 }
-.todeshauchatmung .ta-fang {
-  position: absolute;
-  top: 8%;
-  width: 100px;
-  height: 170px;
-  filter: drop-shadow(0 0 8px rgba(140, 255, 70, 0.5));
-}
-.todeshauchatmung .ta-fang-left  { left: 30%; animation: taFangL 4.4s ease-in-out infinite; }
-.todeshauchatmung .ta-fang-right { right: 30%; animation: taFangR 4.4s ease-in-out infinite; }
-
-@keyframes taFangL {
-  0%, 40%, 100% { transform: translate(-60px, -20px) rotate(-30deg); opacity: .45; }
-  55%, 65%      { transform: translate(14px, 6px)   rotate(-6deg);  opacity: 1;   }
-}
-@keyframes taFangR {
-  0%, 40%, 100% { transform: translate(60px, -20px) rotate(30deg); opacity: .45; }
-  55%, 65%      { transform: translate(-14px, 6px)  rotate(6deg);  opacity: 1;   }
+@keyframes taGustBurst {
+  0%   { transform: scaleX(0.12) scaleY(0.6); opacity: 0; }
+  10%  { opacity: 0.5; }
+  38%  { transform: scaleX(1) scaleY(1);      opacity: 0.9; }
+  70%  { transform: scaleX(1.18) scaleY(1.05); opacity: 0.35; }
+  100% { transform: scaleX(1.3) scaleY(1.1);  opacity: 0; }
 }
 
-/* Einschlag-Flash beim Treffen der Fänge */
-.todeshauchatmung .ta-flash {
+/* ---- Drachenkopf (Bild), Ansatz links, gespiegelt damit er nach rechts schaut ---- */
+.todeshauchatmung .taDragonHead {
   position: absolute;
-  top: 22%;
-  left: 50%;
-  width: 90px;
-  height: 90px;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(210,255,180,0.9) 0%, rgba(140,255,80,0.4) 40%, transparent 70%);
-  z-index: 3;
-  opacity: 0;
-  animation: taFlash 4.4s ease-in-out infinite;
-}
-@keyframes taFlash {
-  0%, 52%, 68%, 100% { opacity: 0; }
-  58%, 62%           { opacity: 1; }
-}
-
-/* Gift-Tropfen, fallen von oben */
-.todeshauchatmung .ta-drip {
-  position: absolute;
-  top: -14px;
-  width: 6px;
-  height: 14px;
-  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-  background: linear-gradient(#c7ff8a, #6fbf2f);
-  box-shadow: 0 0 6px rgba(140, 255, 70, 0.7);
+  top: -15px;
+  left: -40px;
+  width: 340px;
+  height: 340px;
   z-index: 2;
-  animation-name: taDripFall;
-  animation-timing-function: cubic-bezier(.55,0,1,.45);
-  animation-iteration-count: infinite;
-}
-@keyframes taDripFall {
-  0%   { transform: translateY(0); opacity: 0; }
-  8%   { opacity: .9; }
-  95%  { opacity: .6; }
-  100% { transform: translateY(190px); opacity: 0; }
-}
-
-/* Giftsporen, steigen nach oben (Gegenrichtung zu den anderen Stilen) */
-.todeshauchatmung .ta-spore {
-  position: absolute;
-  bottom: -10px;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(190,255,140,0.9), rgba(120,80,180,0.3));
-  box-shadow: 0 0 5px rgba(140, 255, 70, 0.7);
-  z-index: 2;
-  animation-name: taSporeRise;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
-}
-@keyframes taSporeRise {
-  0%   { transform: translate(0, 0); opacity: 0; }
-  15%  { opacity: .85; }
-  50%  { transform: translate(12px, -90px); }
-  100% { transform: translate(-6px, -190px); opacity: 0; }
-}
-
-/* Giftnebel unten */
-.todeshauchatmung .ta-fog {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 60px;
-  background: linear-gradient(to top, rgba(90, 160, 50, 0.28), rgba(80, 40, 110, 0.12), transparent);
-  z-index: 1;
+  transform: scaleX(-1);
+  filter: drop-shadow(0 0 18px rgba(158, 224, 0, 0.55)) drop-shadow(0 0 40px rgba(122, 63, 168, 0.25)) brightness(1.05) contrast(1.05);
   pointer-events: none;
 }
-
-/* Ecken-Dekor */
-.todeshauchatmung .ta-corner {
-  position: absolute;
-  font-size: 13px;
-  color: rgba(140, 255, 90, 0.35);
-  z-index: 3;
+.todeshauchatmung .taDragonHead img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
-.todeshauchatmung .ta-corner.tl { top: 8px; left: 8px; }
-.todeshauchatmung .ta-corner.tr { top: 8px; right: 8px; }
-.todeshauchatmung .ta-corner.bl { bottom: 8px; left: 8px; }
-.todeshauchatmung .ta-corner.br { bottom: 8px; right: 8px; }
+
+/* ---- Flügel oben rechts ---- */
+.todeshauchatmung .taWing {
+  position: absolute;
+  top: -25px;
+  right: -55px;
+  width: 380px;
+  height: 380px;
+  z-index: 2;
+  transform: none;
+  opacity: 0.55;
+  filter: drop-shadow(0 0 18px rgba(158, 224, 0, 0.5)) drop-shadow(0 0 40px rgba(122, 63, 168, 0.22)) brightness(1.05) contrast(1.05);
+  pointer-events: none;
+}
+.todeshauchatmung .taWing img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
