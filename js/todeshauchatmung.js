@@ -9,8 +9,8 @@
    ============================================================ */
 (function () {
 
-  var DRAGON_HEAD_URL = 'BILD-URL-DRACHENKOPF-HIER-EINTRAGEN.png';
-  var WING_URL = 'BILD-URL-FLUEGEL-HIER-EINTRAGEN.png';
+  var DRAGON_HEAD_URL = 'https://cdn.jsdelivr.net/gh/Zentarashi/Demonslayer@main/images/drachenkopf.png';
+  var WING_URL = 'https://cdn.jsdelivr.net/gh/Zentarashi/Demonslayer@main/images/fluegel.webp';
 
   var FOG_BANKS = [
     { top: '-15%', duration: '12s', delay: '0s' },
