@@ -213,7 +213,7 @@ document.addEventListener("DOMContentLoaded", function () {
       var W = width;
       var H = 80;
 
-      lineT += dt * 0.022;
+      lineT += 0.022;
 
       nCtx.clearRect(0, 0, W, H);
 
@@ -410,7 +410,7 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     function waveLoop(dt) {
 
-      waveT += dt * 0.002;
+      waveT += 0.002;
 
       for (var i = 0; i < spans.length; i++) {
 
