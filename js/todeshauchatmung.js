@@ -9,8 +9,8 @@
    ============================================================ */
 (function () {
    
-var DRAGON_HEAD_URL = 'https://cdn.jsdelivr.net/gh/Zentarashi/Demonslayer@main/images/todeshauch-drache.png';
-var WING_URL = 'https://cdn.jsdelivr.net/gh/Zentarashi/Demonslayer@main/images/Flügel.webp';
+var DRAGON_HEAD_URL = 'https://raw.githubusercontent.com/Zentarashi/Demonslayer/main/images/todeshauch-drache.png';
+var WING_URL = 'https://raw.githubusercontent.com/Zentarashi/Demonslayer/main/images/TodeshauchFl%C3%BCgel.png';
 
   var FOG_BANKS = [
     { top: '-15%', duration: '12s', delay: '0s' },
