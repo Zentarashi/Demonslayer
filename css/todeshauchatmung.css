@@ -41,7 +41,7 @@
   overflow: hidden;
   display: inline-block;
   border-right: 2px solid #9ee000;
-  width: 0;
+  width: auto;
   animation: taCaret 0.8s step-end infinite;
 }
 
