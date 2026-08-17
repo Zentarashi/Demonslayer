@@ -110,7 +110,7 @@ var WING_URL = 'https://raw.githubusercontent.com/Zentarashi/Demonslayer/main/im
     var wrap = document.createElement('div');
     wrap.className = 'breathGust';
     wrap.style.top = '87px';
-    wrap.style.left = '260px';
+    wrap.style.left = '300px';
     wrap.style.width = '420px';
     wrap.style.height = '120px';
 
