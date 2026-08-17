@@ -149,18 +149,20 @@ var WING_URL = 'https://raw.githubusercontent.com/Zentarashi/Demonslayer/main/im
     return wrap;
   }
 
-  function typewriter(el, text, speed) {
-    var i = 0;
-    el.textContent = '';
-    function step() {
-      if (i <= text.length) {
-        el.textContent = text.slice(0, i);
-        i++;
-        setTimeout(step, speed);
-      }
+function typewriter(el, text, speed) {
+  var i = 0;
+  el.textContent = '';
+
+  function step() {
+    if (i <= text.length) {
+      el.textContent = text.slice(0, i);
+      i++;
+      setTimeout(step, speed);
     }
-    step();
   }
+
+  step();
+}
 
   function init() {
     var boxes = document.querySelectorAll('.todeshauchatmung');
