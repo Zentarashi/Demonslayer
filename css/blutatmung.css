@@ -33,7 +33,7 @@ div.blutatmung span.ba-lbl {
   font-family: monospace;
   font-size: 9px;
   letter-spacing: .22em;
-  color: #aa000033;
+  color: #aa0000;
   text-transform: uppercase;
   margin-bottom: .4rem;
 }
@@ -64,7 +64,7 @@ div.blutatmung div.ba-divider {
 div.blutatmung p.ba-dsc {
   font-family: Georgia, serif;
   font-size: 12px;
-  color: #550000aa;
+  color: #550000;
   font-style: italic;
   line-height: 1.6;
   margin: 0;
