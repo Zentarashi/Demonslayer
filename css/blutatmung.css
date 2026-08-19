@@ -1,0 +1,81 @@
+/* ================================================
+   BLUT-ATMUNG — CSS
+   In dein globales CSS einfügen
+   ================================================ */
+
+div.blutatmung {
+  position: relative;
+  margin: .3rem 0;
+  border-radius: 6px;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 30%, #1a0000 0%, #080000 100%) !important;
+  background-color: #080000 !important;
+  min-height: 130px;
+}
+
+div.blutatmung canvas.ba-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+div.blutatmung div.ba-inner {
+  position: relative;
+  z-index: 99;
+  padding: 1.4rem 1.6rem 1.6rem;
+}
+
+div.blutatmung span.ba-lbl {
+  display: block;
+  font-family: monospace;
+  font-size: 9px;
+  letter-spacing: .22em;
+  color: #aa000033;
+  text-transform: uppercase;
+  margin-bottom: .4rem;
+}
+
+div.blutatmung div.ba-ttl {
+  display: block;
+  font-family: 'Nosifer', serif;
+  font-size: 1rem;
+  min-height: 1.8em;
+  line-height: 1.8;
+  color: #660000;
+}
+
+div.blutatmung div.ba-ttl span {
+  display: inline-block;
+  color: #660000 !important;
+}
+
+div.blutatmung div.ba-divider {
+  height: 1px;
+  margin: .6rem 0;
+  border: none;
+  background: linear-gradient(90deg, transparent, #440000aa, #660000aa, #440000aa, transparent);
+  box-shadow: 0 0 4px #44000066;
+  transition: background .5s, box-shadow .5s;
+}
+
+div.blutatmung p.ba-dsc {
+  font-family: Georgia, serif;
+  font-size: 12px;
+  color: #550000aa;
+  font-style: italic;
+  line-height: 1.6;
+  margin: 0;
+}
+
+div.blutatmung .ba-wc {
+  display: inline-block;
+  opacity: 0;
+  animation: baWcIn .4s ease-out forwards;
+}
+@keyframes baWcIn {
+  0%   { opacity: 0; transform: translateY(5px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
