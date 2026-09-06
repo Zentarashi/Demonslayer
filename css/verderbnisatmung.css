@@ -1,0 +1,111 @@
+/* ============================================================
+   VERDERBNIS-ATMUNG
+   Klasse: .verderbnisatmung
+   In globales CSS einbinden
+   ============================================================ */
+
+.verderbnisatmung {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  background-color: #050510 !important;
+  background: radial-gradient(ellipse at 50% 45%, #100e22 0%, #050510 75%) !important;
+  border-radius: 4px;
+  overflow: hidden;
+  padding: 26px 40px 30px;
+  box-sizing: border-box;
+  color: #cfd4dc;
+  font-family: sans-serif;
+}
+
+.verderbnisatmung .veLabel {
+  position: relative;
+  z-index: 3;
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: #6a6a8a;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  font-family: 'Noto Serif JP', serif;
+}
+
+.verderbnisatmung .veTitle {
+  position: relative;
+  z-index: 3;
+  font-family: 'Dancing Script', cursive;
+  font-weight: 700;
+  font-size: 34px;
+  color: #8ee9df;
+  text-shadow: 0 0 10px rgba(142, 233, 223, 0.5), 0 0 28px rgba(140, 50, 200, 0.45);
+  display: inline-block;
+  border-right: 2px solid #8ee9df;
+  padding-right: 2px;
+  animation: veCaret 0.8s step-end infinite;
+}
+
+@keyframes veCaret { 50% { border-color: transparent; } }
+
+.verderbnisatmung .veDivider {
+  position: relative;
+  z-index: 3;
+  height: 1px;
+  margin: 16px 0 18px;
+  background-color: #26244a;
+}
+
+.verderbnisatmung .veDesc {
+  position: relative;
+  z-index: 3;
+  font-style: italic;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #9290ac;
+}
+
+.verderbnisatmung .veEffectLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* ---- Spiegel-Scherben, driften minimal ---- */
+.verderbnisatmung .veShard {
+  animation: veShardDrift 6s ease-in-out infinite;
+  transform-origin: var(--ox) var(--oy);
+}
+@keyframes veShardDrift {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50%      { transform: translate(var(--mx), var(--my)) rotate(var(--mr)); }
+}
+
+/* ---- Risslinien mit tuerkis-violetten Adern ---- */
+.verderbnisatmung .veCrack {
+  stroke-dasharray: 900;
+  stroke-dashoffset: 900;
+  animation: veCrackDraw 1.8s ease-out forwards, veCrackPulse 3.4s ease-in-out infinite 1.8s;
+}
+@keyframes veCrackDraw { to { stroke-dashoffset: 0; } }
+@keyframes veCrackPulse {
+  0%, 100% { filter: drop-shadow(0 0 2px #8ee9df); opacity: 0.75; }
+  50%      { filter: drop-shadow(0 0 9px #a24fd6); opacity: 1; }
+}
+
+/* ---- Korruptions-Partikel steigen aus den Rissen auf ---- */
+.verderbnisatmung .veEmber {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #8ee9df;
+  box-shadow: 0 0 6px 2px #a24fd6;
+  opacity: 0;
+  animation: veEmberRise ease-in infinite;
+}
+@keyframes veEmberRise {
+  0%   { opacity: 0; transform: translateY(0) scale(1); }
+  15%  { opacity: 0.9; }
+  85%  { opacity: 0.5; }
+  100% { opacity: 0; transform: translateY(-90px) scale(0.3); }
+}
