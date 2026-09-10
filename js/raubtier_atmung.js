@@ -48,6 +48,7 @@
     var content = splitContent(rb);
     var name = content.name;
     var desc = content.desc;
+    var uid = "" + Date.now() + "_" + index + "_" + Math.floor(Math.random() * 1000000);
 
     /*
       Keine globalen animalLeo/animalBear/animalTiger-IDs mehr.
