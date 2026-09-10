@@ -729,3 +729,59 @@
     transition-duration: .001ms !important;
   }
 }
+
+/* =========================================================
+   KOMPATIBILITÄTS-FIX FÜR DIE TIER-IDs
+   Unterstützt sowohl die neuen rb*-IDs als auch die
+   ursprünglichen animalLeo/animalBear/animalTiger-IDs.
+   ========================================================= */
+.raubtieratmung .rb-animal-wrap [id^="rbLeo_"],
+.raubtieratmung .rb-animal-wrap #animalLeo {
+  position: absolute !important;
+  display: block !important;
+  visibility: visible !important;
+  right: 3% !important;
+  top: 50% !important;
+  width: auto !important;
+  max-width: none !important;
+  height: 112% !important;
+}
+
+.raubtieratmung .rb-animal-wrap [id^="rbBear_"],
+.raubtieratmung .rb-animal-wrap #animalBear {
+  position: absolute !important;
+  display: block !important;
+  visibility: visible !important;
+  right: 22% !important;
+  top: 51% !important;
+  width: auto !important;
+  max-width: none !important;
+  height: 112% !important;
+}
+
+.raubtieratmung .rb-animal-wrap [id^="rbTiger_"],
+.raubtieratmung .rb-animal-wrap #animalTiger {
+  position: absolute !important;
+  display: block !important;
+  visibility: visible !important;
+  right: 8% !important;
+  top: 50% !important;
+  width: auto !important;
+  max-width: none !important;
+  height: 128% !important;
+}
+
+/* SVG im Bären-Container muss die Containergröße übernehmen. */
+.raubtieratmung .rb-animal-wrap [id^="rbBear_"] > svg,
+.raubtieratmung .rb-animal-wrap #animalBear > svg {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* PNGs sicher sichtbar lassen, sobald die JS-Animation sie aktiviert. */
+.raubtieratmung .rb-animal-wrap img[id^="rbLeo_"].rb-active,
+.raubtieratmung .rb-animal-wrap img[id^="rbTiger_"].rb-active,
+.raubtieratmung .rb-animal-wrap [id^="rbBear_"].rb-active {
+  visibility: visible !important;
+}
