@@ -1,192 +1,731 @@
+/* =========================================================
+   RAUBTIER-ATMUNG — CSS
+   Dunkle, aggressive "Raubtier springt aus der Dunkelheit"-Optik
+   ========================================================= */
 
-/* body entfernt */{background:#fff;margin:0;padding:40px 20px;font-family:Georgia,serif;}
+.raubtieratmung {
+  --accent: #d8872c;
+  --accent-shadow: 0 0 10px rgba(210,115,25,.42), 1px 1px 3px #000;
 
-.raubtieratmung{
-  position:relative;max-width:820px;margin:0 auto;
-  padding:1.4rem 1.6rem 1.6rem;border-radius:6px;overflow:hidden;
-  background:linear-gradient(135deg,#080500 0%,#120a00 100%) !important;
-  background-color:#080500 !important;
-  min-height:150px;
-  isolation:isolate;
+  position: relative;
+  box-sizing: border-box;
+  width: min(820px, 100%);
+  min-height: 205px;
+  margin: 1.5rem auto;
+  padding: 1.35rem 1.55rem 1.55rem;
+  overflow: hidden;
+  isolation: isolate;
+
+  border: 1px solid rgba(180,100,20,.24);
+  border-radius: 8px;
+
+  background:
+    radial-gradient(circle at 50% 55%, rgba(100,55,12,.13), transparent 42%),
+    linear-gradient(135deg, #030303 0%, #090705 48%, #020202 100%) !important;
+
+  color: #d9d0c4;
+  box-shadow:
+    inset 0 0 50px rgba(0,0,0,.85),
+    0 8px 30px rgba(0,0,0,.35);
+
+  transition:
+    box-shadow .45s ease,
+    border-color .45s ease,
+    transform .08s linear;
+
+  font-family: Georgia, serif;
 }
 
-@keyframes rbShake{
-  0%  {transform:translate(0,0) rotate(0);}
-  8%  {transform:translate(-8px,-4px) rotate(-1.5deg);}
-  16% {transform:translate(9px,5px) rotate(1.3deg);}
-  24% {transform:translate(-7px,3px) rotate(-1deg);}
-  32% {transform:translate(8px,-5px) rotate(1.5deg);}
-  42% {transform:translate(-5px,4px) rotate(-0.8deg);}
-  52% {transform:translate(6px,-3px) rotate(0.9deg);}
-  62% {transform:translate(-4px,3px) rotate(-0.5deg);}
-  72% {transform:translate(4px,-2px) rotate(0.4deg);}
-  84% {transform:translate(-2px,1px) rotate(-0.2deg);}
-  100%{transform:translate(0,0) rotate(0);}
-}
-.raubtieratmung.raubtieratmung.shaking{ animation:rbShake 0.75s ease-out forwards; }
-
-.rb-glow-overlay{
-  position:absolute;inset:0;z-index:1;pointer-events:none;
-  opacity:0;border-radius:6px;transition:opacity 0.3s;
-}
-.rb-edge-canvas{
-  position:absolute;inset:0;width:100%;height:100%;
-  z-index:3;pointer-events:none;
+/* verhindert, dass ein fremdes Theme den Inhalt optisch "weiß" macht */
+.raubtieratmung *,
+.raubtieratmung *::before,
+.raubtieratmung *::after {
+  box-sizing: border-box;
 }
 
-.rb-animal-wrap{
-  position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden;
+.rb-noise {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: .07;
+
+  background-image:
+    repeating-radial-gradient(
+      circle at 0 0,
+      transparent 0,
+      transparent 2px,
+      rgba(255,255,255,.06) 3px,
+      transparent 4px
+    );
+
+  mix-blend-mode: screen;
 }
 
-/* LEO — links */
-/* LEOPARD – links */
-.raubtieratmung #animalLeo{
-  position:absolute;
-  right:8%;
-  top:50%;
-  height:90%;
-  width:auto;
-  opacity:0;
-  transform:translateY(-50%) translateX(80px) scale(1);
+.rb-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 7;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      transparent 34%,
+      rgba(0,0,0,.2) 58%,
+      rgba(0,0,0,.8) 100%
+    );
 }
 
-@keyframes leoAttack{
-  0%{
-    opacity:0;
-    transform:translateY(-50%) translateX(80px) scale(1);
-  }
+.rb-glow-overlay {
+  position: absolute;
+  inset: -15%;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
 
-  22%{
-    opacity:1;
-    transform:translateY(-50%) translateX(0) scale(1);
-  }
+  filter: blur(18px);
+  transform: scale(.9);
 
-  30%{
-    transform:translateY(calc(-50% - 5px)) translateX(5px) scale(1.02);
-  }
-
-  40%{
-    transform:translateY(calc(-50% + 4px)) translateX(2px) scale(1.01);
-  }
-
-  60%{
-    transform:translateY(-50%) translateX(0) scale(1);
-  }
-
-  82%{
-    opacity:.85;
-  }
-
-  100%{
-    opacity:0;
-    transform:translateY(-50%) translateX(10px) scale(.95);
-  }
+  transition:
+    opacity .55s ease,
+    transform .8s cubic-bezier(.2,.8,.2,1);
 }
 
-.raubtieratmung #animalLeo.attack{
-  animation:leoAttack 3s ease-out forwards;
+.rb-glow-overlay.rb-glow-active {
+  opacity: 1;
+  transform: scale(1.08);
 }
 
-/* BÄR — Mitte */
-/* BÄR – exakt mittig */
-.raubtieratmung #animalBear{
-  position:absolute;
-  right:25%;
-  top:50%;
-  height:90%;
-  width:auto;
-  opacity:0;
-  transform:translateY(-50%) translateX(80px) scale(1);
+.rb-flash {
+  position: absolute;
+  inset: -30%;
+  z-index: 8;
+  pointer-events: none;
+  opacity: 0;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(255,255,255,.8) 0%,
+      var(--accent) 7%,
+      rgba(255,255,255,.12) 20%,
+      transparent 48%
+    );
+
+  mix-blend-mode: screen;
+  transform: scale(.25);
 }
 
-@keyframes bearAttack{
-  0%{
-    opacity:0;
-    transform:translateY(-50%) translateX(80px) scale(.9);
-  }
-
-  22%{
-    opacity:1;
-    transform:translateY(-50%) translateX(0) scale(1);
-  }
-
-  30%{
-    transform:translateY(calc(-50% - 5px)) translateX(5px) scale(1.02) rotate(1deg);
-  }
-
-  40%{
-    transform:translateY(calc(-50% + 4px)) translateX(2px) scale(1.01) rotate(-1deg);
-  }
-
-  60%{
-    transform:translateY(-50%) translateX(0) scale(1) rotate(0);
-  }
-
-  82%{
-    opacity:.85;
-  }
-
-  100%{
-    opacity:0;
-    transform:translateY(-50%) translateX(10px) scale(.95);
-  }
+.rb-flash.rb-flash-active {
+  animation: rbFlash .34s cubic-bezier(.15,.8,.3,1) forwards;
 }
 
-.raubtieratmung #animalBear.attack{
-  animation:bearAttack 3s ease-out forwards;
-}
-
-
-/* TIGER — rechts */
-.raubtieratmung #animalTiger{
-  position:absolute;
-  right:20%;
-  top:50%;
-  height:115%;
-  width:auto;
-  opacity:0;
-  transform:translateY(-50%) translateX(80px) scale(1);
-}
-
-@keyframes tigerAttack{
-  0%{
-    opacity:0;
-    transform:translateY(-50%) translateX(80px) scale(1);
+@keyframes rbFlash {
+  0% {
+    opacity: 0;
+    transform: scale(.2);
   }
-
-  22%{
-    opacity:1;
-    transform:translateY(-50%) translateX(0) scale(1);
+  15% {
+    opacity: .95;
   }
-
-  30%{
-    transform:translateY(calc(-50% - 5px)) translateX(-5px) scale(1.02);
+  45% {
+    opacity: .42;
+    transform: scale(1);
   }
-
-  40%{
-    transform:translateY(calc(-50% + 4px)) translateX(-2px) scale(1.01);
-  }
-
-  60%{
-    transform:translateY(-50%) translateX(0) scale(1);
-  }
-
-  82%{
-    opacity:.85;
-  }
-
-  100%{
-    opacity:0;
-    transform:translateY(-50%) translateX(10px) scale(.95);
+  100% {
+    opacity: 0;
+    transform: scale(1.7);
   }
 }
 
-.raubtieratmung #animalTiger.attack{
-  animation:tigerAttack 3s ease-out forwards;
+.rb-edge-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 9;
+
+  width: 100%;
+  height: 100%;
+
+  pointer-events: none;
 }
 
-.rb-inner{position:relative;z-index:6;}
-.rb-lbl{display:block;font-family:monospace;font-size:9px;letter-spacing:.22em;color:#cc770055;text-transform:uppercase;margin-bottom:.4rem;}
-.rb-ttl{display:block;font-family:'Cinzel',serif;font-weight:900;font-size:1.3rem;min-height:1.8em;line-height:1.8;}
-.rb-divider{height:1px;margin:.6rem 0;border:none;transition:background 0.4s,box-shadow 0.4s;}
-.rb-dsc{font-family:Georgia,serif;font-size:12px;color:#885500aa;font-style:italic;line-height:1.6;margin:0;}
+.rb-animal-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+
+  overflow: hidden;
+  pointer-events: none;
+
+  /* Tiere dürfen optisch über die komplette Karte laufen. */
+  clip-path: inset(0);
+}
+
+/* Beide Asset-Typen bekommen eine gemeinsame Basis. */
+.rb-animal-wrap .rb-animal {
+  position: absolute;
+  display: block;
+
+  width: auto;
+  max-width: none;
+
+  pointer-events: none;
+  user-select: none;
+
+  opacity: 0;
+
+  will-change:
+    transform,
+    opacity,
+    filter;
+}
+
+/* LEO */
+.rb-animal-wrap [id^="rbLeo_"] {
+  right: 3%;
+  top: 50%;
+  height: 112%;
+
+  transform:
+    translate3d(145px, -50%, 0)
+    scale(.78)
+    rotate(3deg);
+}
+
+/* BÄR */
+.rb-animal-wrap [id^="rbBear_"] {
+  right: 22%;
+  top: 51%;
+  height: 112%;
+
+  transform:
+    translate3d(175px, -50%, 0)
+    scale(.74)
+    rotate(2deg);
+}
+
+/* TIGER */
+.rb-animal-wrap [id^="rbTiger_"] {
+  right: 8%;
+  top: 50%;
+  height: 128%;
+
+  transform:
+    translate3d(160px, -50%, 0)
+    scale(.76)
+    rotate(3deg);
+}
+
+/*
+   Die Animation besteht aus:
+   1. fast unsichtbar
+   2. aggressiv aus dem rechten Rand auftauchen
+   3. kurzer "freeze / crouch"
+   4. LUNGE nach vorne
+   5. zurückziehen
+   6. im Dunkeln verschwinden
+*/
+
+.rb-animal.rb-active {
+  animation: rbPredatorAttack 3.05s cubic-bezier(.18,.76,.18,1) forwards;
+}
+
+@keyframes rbPredatorAttack {
+  0% {
+    opacity: 0;
+    transform:
+      translate3d(150px, -50%, 0)
+      scale(.76)
+      rotate(4deg);
+    filter: brightness(.25) contrast(1.15);
+  }
+
+  9% {
+    opacity: .2;
+  }
+
+  18% {
+    opacity: .95;
+    transform:
+      translate3d(18px, -50%, 0)
+      scale(.94)
+      rotate(1deg);
+    filter: brightness(1.15) contrast(1.25);
+  }
+
+  29% {
+    opacity: 1;
+    transform:
+      translate3d(0, -50%, 0)
+      scale(1)
+      rotate(0);
+  }
+
+  /* kurze Spannung */
+  39% {
+    transform:
+      translate3d(-7px, -50%, 0)
+      scale(.98);
+  }
+
+  /* MASSIVER LUNGE */
+  46% {
+    opacity: 1;
+    transform:
+      translate3d(-72px, -50%, 0)
+      scale(1.16)
+      rotate(-1.2deg);
+    filter: brightness(1.55) contrast(1.4);
+  }
+
+  53% {
+    transform:
+      translate3d(-102px, -50%, 0)
+      scale(1.24)
+      rotate(-2deg);
+    filter: brightness(1.85) contrast(1.5);
+  }
+
+  /* recoil */
+  63% {
+    transform:
+      translate3d(-18px, -50%, 0)
+      scale(1.03)
+      rotate(0);
+    filter: brightness(1.2) contrast(1.3);
+  }
+
+  75% {
+    opacity: .85;
+    transform:
+      translate3d(8px, -50%, 0)
+      scale(.98);
+  }
+
+  88% {
+    opacity: .42;
+    transform:
+      translate3d(42px, -50%, 0)
+      scale(.91);
+    filter: brightness(.75) contrast(1.15);
+  }
+
+  100% {
+    opacity: 0;
+    transform:
+      translate3d(110px, -50%, 0)
+      scale(.8);
+    filter: brightness(.2) contrast(1);
+  }
+}
+
+/* Bär etwas schwerfälliger und wuchtiger */
+.rb-animal.rb-bear-active {
+  animation-name: rbBearAttack;
+}
+
+@keyframes rbBearAttack {
+  0% {
+    opacity: 0;
+    transform:
+      translate3d(180px, -50%, 0)
+      scale(.7)
+      rotate(3deg);
+    filter: brightness(.2) contrast(1.15);
+  }
+
+  17% {
+    opacity: .9;
+    transform:
+      translate3d(24px, -50%, 0)
+      scale(.92)
+      rotate(1deg);
+  }
+
+  31% {
+    opacity: 1;
+    transform:
+      translate3d(0, -50%, 0)
+      scale(1);
+  }
+
+  42% {
+    transform:
+      translate3d(-10px, -50%, 0)
+      scale(.98);
+  }
+
+  49% {
+    transform:
+      translate3d(-58px, -50%, 0)
+      scale(1.12)
+      rotate(-1deg);
+    filter: brightness(1.35) contrast(1.4);
+  }
+
+  56% {
+    transform:
+      translate3d(-90px, -50%, 0)
+      scale(1.2)
+      rotate(-2deg);
+    filter: brightness(1.65) contrast(1.45);
+  }
+
+  66% {
+    transform:
+      translate3d(-15px, -50%, 0)
+      scale(1.02);
+  }
+
+  79% {
+    opacity: .8;
+    transform:
+      translate3d(10px, -50%, 0)
+      scale(.97);
+  }
+
+  100% {
+    opacity: 0;
+    transform:
+      translate3d(120px, -50%, 0)
+      scale(.79);
+    filter: brightness(.2);
+  }
+}
+
+/* TITEL */
+.rb-inner {
+  position: relative;
+  z-index: 10;
+
+  width: 54%;
+  min-width: 260px;
+  max-width: 510px;
+
+  padding: .15rem 0 0;
+
+  text-shadow: 1px 2px 4px #000;
+}
+
+.rb-lbl {
+  display: block;
+
+  margin-bottom: .25rem;
+
+  color: rgba(210,135,45,.46);
+
+  font-family:
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    monospace;
+
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .34em;
+  text-transform: uppercase;
+}
+
+.rb-ttl {
+  display: flex;
+  align-items: center;
+
+  min-height: 2.1em;
+
+  color: #d8872c;
+  font-family: Cinzel, Georgia, serif;
+  font-size: clamp(1.15rem, 2.8vw, 1.55rem);
+  font-weight: 900;
+  line-height: 1.35;
+
+  text-shadow:
+    0 0 10px rgba(210,115,25,.45),
+    1px 2px 4px #000;
+
+  transition:
+    color .4s ease,
+    text-shadow .4s ease;
+}
+
+.rb-ttl span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(7px);
+
+  animation:
+    rbCharIn .42s cubic-bezier(.2,.8,.2,1)
+    var(--char-delay)
+    forwards;
+}
+
+@keyframes rbCharIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rb-title-hit {
+  animation: rbTitleHit .48s cubic-bezier(.15,.9,.2,1);
+}
+
+@keyframes rbTitleHit {
+  0% {
+    transform: translateX(0) scale(1);
+  }
+
+  22% {
+    transform: translateX(-3px) scale(1.025);
+  }
+
+  44% {
+    transform: translateX(3px) scale(1.045);
+  }
+
+  100% {
+    transform: translateX(0) scale(1);
+  }
+}
+
+.rb-divider {
+  width: 100%;
+  height: 1px;
+
+  margin: .62rem 0 .72rem;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(205,115,25,.8),
+      rgba(255,170,55,.55),
+      rgba(205,115,25,.8),
+      transparent
+    );
+
+  box-shadow: 0 0 9px rgba(150,75,10,.55);
+
+  transform-origin: left center;
+  animation: rbDividerPulse 2.4s ease-in-out infinite;
+}
+
+@keyframes rbDividerPulse {
+  0%, 100% {
+    opacity: .58;
+    transform: scaleX(.88);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+.rb-dsc {
+  max-width: 520px;
+  margin: 0;
+
+  color: rgba(220,205,188,.74);
+
+  font-family: Georgia, serif;
+  font-size: 12px;
+  font-style: italic;
+  line-height: 1.62;
+
+  text-shadow: 0 1px 3px #000;
+}
+
+/* KRALLEN-SLASHES */
+.rb-slash {
+  position: absolute;
+  z-index: 8;
+
+  width: 150%;
+  height: 2px;
+
+  left: -125%;
+  top: 50%;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255,255,255,0) 22%,
+      var(--accent) 50%,
+      rgba(255,255,255,.8) 53%,
+      transparent 72%
+    );
+
+  box-shadow:
+    0 0 8px var(--accent),
+    0 0 22px var(--accent);
+
+  transform: rotate(-18deg) translateX(0);
+}
+
+.rb-slash-b {
+  transform: rotate(-25deg) translateX(0);
+}
+
+.rb-slash-active {
+  animation: rbClawSlash .46s cubic-bezier(.15,.85,.25,1) forwards;
+}
+
+.rb-slash-b.rb-slash-active {
+  animation-delay: .055s;
+}
+
+@keyframes rbClawSlash {
+  0% {
+    left: -125%;
+    opacity: 0;
+  }
+
+  20% {
+    opacity: .95;
+  }
+
+  100% {
+    left: 105%;
+    opacity: 0;
+  }
+}
+
+/* PARTICLES */
+.rb-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+
+  pointer-events: none;
+}
+
+.rb-particles i {
+  position: absolute;
+
+  width: var(--size);
+  height: var(--size);
+
+  border-radius: 50%;
+
+  opacity: 0;
+}
+
+.rb-particles-active i {
+  animation:
+    rbParticle .9s cubic-bezier(.1,.8,.25,1)
+    var(--delay)
+    forwards;
+}
+
+@keyframes rbParticle {
+  0% {
+    opacity: 0;
+    transform: translate3d(0,0,0) scale(.3);
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform:
+      translate3d(var(--dx), var(--dy), 0)
+      scale(0);
+  }
+}
+
+/* IMPACT: nur kurz, aber heftig */
+.raubtieratmung.rb-impact {
+  animation: rbContainerImpact .52s cubic-bezier(.2,.85,.2,1);
+}
+
+@keyframes rbContainerImpact {
+  0% {
+    transform: translate3d(0,0,0) rotate(0);
+  }
+
+  13% {
+    transform: translate3d(-9px, 2px, 0) rotate(-.8deg);
+  }
+
+  25% {
+    transform: translate3d(11px, -3px, 0) rotate(.9deg);
+  }
+
+  38% {
+    transform: translate3d(-7px, 3px, 0) rotate(-.65deg);
+  }
+
+  52% {
+    transform: translate3d(5px, -2px, 0) rotate(.45deg);
+  }
+
+  70% {
+    transform: translate3d(-2px, 1px, 0) rotate(-.15deg);
+  }
+
+  100% {
+    transform: translate3d(0,0,0) rotate(0);
+  }
+}
+
+/* ERROR / FALLBACK */
+.raubtieratmung.rb-error .rb-inner {
+  width: 100%;
+}
+
+.raubtieratmung.rb-error .rb-lbl {
+  color: rgba(210,135,45,.65);
+}
+
+/* MOBILE */
+@media (max-width: 620px) {
+  .raubtieratmung {
+    min-height: 190px;
+    padding: 1.15rem 1.1rem 1.25rem;
+  }
+
+  .rb-inner {
+    width: 72%;
+    min-width: 0;
+  }
+
+  .rb-dsc {
+    font-size: 11px;
+  }
+
+  .rb-animal-wrap [id^="rbLeo_"] {
+    right: -5%;
+    height: 100%;
+  }
+
+  .rb-animal-wrap [id^="rbBear_"] {
+    right: 4%;
+    height: 102%;
+  }
+
+  .rb-animal-wrap [id^="rbTiger_"] {
+    right: -4%;
+    height: 116%;
+  }
+}
+
+/* Bewegungsreduktion */
+@media (prefers-reduced-motion: reduce) {
+  .raubtieratmung *,
+  .raubtieratmung::before,
+  .raubtieratmung::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
+}
