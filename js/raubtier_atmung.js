@@ -255,11 +255,12 @@
 
     function resetAnimal(animal) {
       if (!animal.el) return;
-      animal.el.classList.remove("rb-active", "rb-lunge");
+      animal.el.classList.remove("rb-active", "rb-bear-active", "rb-lunge");
       animal.el.style.animation = "none";
       animal.el.style.opacity = "0";
       animal.el.style.filter = "";
       animal.el.offsetHeight;
+      animal.el.style.animation = "";
     }
 
     function setTheme(animal) {
@@ -350,6 +351,7 @@
         animal.el.style.filter = animal.filter;
         animal.el.style.animation = "none";
         animal.el.offsetHeight;
+        animal.el.style.animation = "";
         animal.el.classList.add("rb-active");
 
         glow.classList.remove("rb-glow-active");
