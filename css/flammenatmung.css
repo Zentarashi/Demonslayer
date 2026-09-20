@@ -4,7 +4,7 @@
   max-width:820px;
   height:200px;
   box-sizing:border-box;
-  margin:16px auto;
+  margin:16px 0;
   padding:36px 40px 54px 40px;
   background-color:#170a02 !important;
   background:radial-gradient(ellipse at 50% 90%, #3a1503 0%, #170a02 55%, #0d0501 100%) !important;
