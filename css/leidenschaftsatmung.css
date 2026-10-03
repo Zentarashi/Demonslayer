@@ -1,0 +1,138 @@
+/* ================================================
+   LEIDENSCHAFTS-ATMUNG — CSS
+   In den globalen CSS-Bereich des Forums einfügen
+   ================================================ */
+
+.leidenschaftsatmung {
+  position: relative;
+  overflow: hidden;
+  min-height: 180px;
+  padding: 36px 44px 44px !important;
+  border-radius: 8px !important;
+  background-color: #150203 !important;
+  background: radial-gradient(ellipse at 50% 60%, #2a0808 0%, #150203 50%, #080000 100%) !important;
+  border: 1px solid rgba(200, 40, 40, 0.25) !important;
+  box-shadow:
+    0 0 0 1px rgba(180,30,30,0.2),
+    0 20px 60px rgba(0,0,0,0.8),
+    inset 0 0 80px rgba(120,0,0,0.15) !important;
+  isolation: isolate;
+}
+
+/* Canvas */
+.leidenschaftsatmung .la-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Vignette */
+.leidenschaftsatmung .la-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(0,0,0,0.55) 100%);
+  pointer-events: none;
+}
+
+/* Heartbeat glow */
+.leidenschaftsatmung .la-heartglow {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: radial-gradient(ellipse at 50% 55%, rgba(180,10,10,0.18) 0%, transparent 65%);
+  animation: laHeartPulse 1.1s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes laHeartPulse {
+  0%   { opacity: 0.4; transform: scale(1); }
+  15%  { opacity: 1;   transform: scale(1.04); }
+  30%  { opacity: 0.5; transform: scale(1.01); }
+  45%  { opacity: 0.9; transform: scale(1.035); }
+  60%  { opacity: 0.3; transform: scale(1); }
+  100% { opacity: 0.4; transform: scale(1); }
+}
+
+/* Inner content */
+.leidenschaftsatmung .la-inner {
+  position: relative;
+  z-index: 4;
+}
+
+/* Label */
+.leidenschaftsatmung .la-label {
+  font-family: "Noto Serif JP", serif;
+  font-size: 11px;
+  letter-spacing: 5px;
+  color: #cc4444 !important;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  opacity: 0.85;
+}
+
+/* Title — flame gradient */
+.leidenschaftsatmung .la-ttl {
+  font-family: "Cinzel", serif;
+  font-weight: 900;
+  font-size: 28px;
+  background: linear-gradient(90deg, #ff2a2a, #ff7020, #ff2a2a, #cc0000, #ff5500);
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: laTitleFlow 3s linear infinite;
+  margin: 0 0 12px 0;
+  min-height: 1.4em;
+  filter: drop-shadow(0 0 12px rgba(255,60,0,0.6));
+}
+
+@keyframes laTitleFlow {
+  0%   { background-position: 0% center; }
+  100% { background-position: 300% center; }
+}
+
+/* Divider */
+.leidenschaftsatmung .la-divider {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(180,20,20,0), rgba(220,60,20,0.7), rgba(180,20,20,0));
+  margin-bottom: 14px;
+}
+
+/* Description */
+.leidenschaftsatmung .la-desc {
+  font-family: "Noto Serif JP", serif;
+  font-size: 14px;
+  line-height: 1.9;
+  color: #e8b8a8 !important;
+}
+
+/* Typewriter char animation */
+@keyframes laSparkChar {
+  0%   { opacity: 0; transform: translateY(6px) scale(0.7); }
+  40%  { opacity: 1; transform: translateY(-2px) scale(1.05); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.leidenschaftsatmung .la-wc {
+  display: inline-block;
+  animation: laSparkChar 0.35s ease forwards;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .leidenschaftsatmung {
+    padding: 24px 20px 32px !important;
+  }
+  .leidenschaftsatmung .la-ttl {
+    font-size: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .leidenschaftsatmung .la-heartglow { animation: none; opacity: 0.6; }
+  .leidenschaftsatmung .la-ttl       { animation: none; background-position: 0% center; }
+  .leidenschaftsatmung .la-wc        { animation: none; opacity: 1; }
+}
